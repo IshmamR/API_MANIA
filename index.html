@@ -33,7 +33,7 @@
 			};
 
 
-			postData('http://localhost:3000/css-minify', bodyData)
+			postData('/css-minify', bodyData)
 			.then(data => {
 				console.log(data.sizeAfter); // JSON data parsed by `data.json()` call
 				cssMinified.value = String(data.dataCss.css);
