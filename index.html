@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	
+	<title>API-MANIA</title>
+
+	<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+
+	<!-- <link rel="stylesheet" type="text/css" href="style.css" /> -->
+
+
+</head>
+<body class="bg-gray-50">
+
+	<main>
+		<form action="/css-minify" onsubmit="return false">
+			<textarea id="css-to-minify" class="w-1/2 border border-black" name="css" rows="10"></textarea>
+			<textarea id="css-minified" class="w-1/2 border border-black disabled" name="css" rows="10"></textarea>
+			<button id="sub" class="p-4 bg-green-500">Submit</button>
+		</form>
+	</main>
+
+	<script type="text/javascript">
+		var subBtn = document.querySelector('#sub');
+		var cssToMinify = document.querySelector('#css-to-minify');
+		var cssMinified = document.querySelector('#css-minified');
+
+		subBtn.onclick = () => {
+			var bodyData = {
+				css: cssToMinify.value
+			};
+
+
+			postData('http://localhost:3000/css-minify', bodyData)
+			.then(data => {
+				console.log(data.sizeAfter); // JSON data parsed by `data.json()` call
+				cssMinified.value = String(data.dataCss.css);
+			});
+
+		}
+
+		// Funtion for post request with fetch
+		async function postData(url = '', data = {}) {
+			// Default options are marked with *
+			const response = await fetch(url, {
+				method: 'POST', // *GET, POST, PUT, DELETE, etc.
+				mode: 'cors', // no-cors, *cors, same-origin
+				cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+				credentials: 'same-origin', // include, *same-origin, omit
+				headers: {
+				  'Content-Type': 'application/json'
+				  // 'Content-Type': 'application/x-www-form-urlencoded',
+				},
+				redirect: 'follow', // manual, *follow, error
+				referrerPolicy: 'no-referrer',
+				body: JSON.stringify(data) // body data type must match "Content-Type" header
+				});
+			return response.json(); // parses JSON response into native JavaScript objects
+		}
+	</script>
+
+
+
+	<!-- <script src="index.js"></script> -->
+
+
+</body>
+</html>

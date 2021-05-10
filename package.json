@@ -1,0 +1,25 @@
+{
+  "name": "API-MANIA",
+  "version": "1.0.0",
+  "description": "One app to rule them all. Dozens of free API endpoint to use.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [
+    "api",
+    "javascript",
+    "nodejs",
+    "rest-api"
+  ],
+  "author": "Ishmam Rahman",
+  "license": "ISC",
+  "dependencies": {
+    "csso": "^4.2.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
