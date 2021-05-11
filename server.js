@@ -5,7 +5,6 @@ const fs = require('fs');
 const path = require('path');
 const bodyParser = require('body-parser');
 
-// 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -19,6 +18,12 @@ app.get('/', (req, res) => {
 // Minify CSS Route
 const routeCssMinify = require('./routes/minifiers/routes_css_minify.js');
 app.use('/css-minify', routeCssMinify);
+// Minify JS Route
+const routeJSMinify = require('./routes/minifiers/routes_js_minify.js');
+app.use('/js-minify', routeJSMinify);
+// Minify HTML Route
+const routeHtmlMinify = require('./routes/minifiers/routes_html_minify.js');
+app.use('/html-minify', routeHtmlMinify);
 
 
 

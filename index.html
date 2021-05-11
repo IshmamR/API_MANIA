@@ -15,10 +15,10 @@
 <body class="bg-gray-50">
 
 	<main>
-		<form action="/css-minify" onsubmit="return false">
-			<textarea id="css-to-minify" class="w-1/2 border border-black" name="css" rows="10"></textarea>
-			<textarea id="css-minified" class="w-1/2 border border-black disabled" name="css" rows="10"></textarea>
-			<button id="sub" class="p-4 bg-green-500">Submit</button>
+		<form action="/css-minify" onsubmit="return false" class="flex flex-wrap justify-center w-full">
+			<textarea id="css-to-minify" class="w-11/12 border border-black" name="css" rows="10"></textarea>
+			<textarea id="css-minified" class="w-11/12 border border-black disabled" name="css" rows="10"></textarea>
+			<button id="sub" class="w-24 p-4 bg-green-500">Submit</button>
 		</form>
 	</main>
 
@@ -29,14 +29,13 @@
 
 		subBtn.onclick = () => {
 			var bodyData = {
-				css: cssToMinify.value
+				js: cssToMinify.value
 			};
 
-
-			postData('/css-minify', bodyData)
+			postData('/js-minify', bodyData)
 			.then(data => {
-				console.log(data.sizeAfter); // JSON data parsed by `data.json()` call
-				cssMinified.value = String(data.dataCss.css);
+				console.log(data); // JSON data parsed by `data.json()` call
+				cssMinified.value = String(data.dataMin);
 			});
 
 		}

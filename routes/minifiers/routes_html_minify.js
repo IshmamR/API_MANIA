@@ -10,11 +10,11 @@ router.get('/', (req, res) => {
 	res.json({ sup: "hello" })
 })
 
-// Posted CSS -> minify
+// Posted HTML -> minify
 router.post('/', (req, res) => {
 	// console.log('Posted');
-	if (req.body.css) minifier(req, res, 'css');
-	else res.json({ dataErr: "No CSS found to minify :(" });
+	if (req.body.html) minifier(req, res, 'html');
+	else res.json({ dataErr: "No HTML found to minify :(" });
 })
 
 
