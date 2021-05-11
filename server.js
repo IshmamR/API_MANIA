@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
 
 const fs = require('fs');
 const path = require('path');
@@ -7,7 +8,7 @@ const bodyParser = require('body-parser');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
+app.use(cors()); // CORS 
 
 app.get('/', (req, res) => {
 	res.status(200);
